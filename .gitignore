@@ -21,6 +21,7 @@ transforms_utils/superpixels/cache
 .Python
 local_test.py
 .DS_STORE
+.DS_Store
 .idea/
 .vscode/
 env/
@@ -102,4 +103,3 @@ ENV/
 
 # Rope project settings
 .ropeproject
-*.DS_Store
