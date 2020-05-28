@@ -1,4 +1,4 @@
-# Global pipeline for all
+# pipeline for model training
 
 Requirements:
 - Cuda v9.0+
