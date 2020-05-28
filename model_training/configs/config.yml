@@ -1,0 +1,34 @@
+data_params:
+  batch_size: 4
+  num_workers: 32
+  augmentation_params:
+    resize: 512
+
+train_params:
+  name: Unet2d #512
+  model: models_zoo.segmentation.unet.UNet  #models_zoo.segmentation.unetplusplus.NestedUNet #models_zoo.classification.resnet.EfficientNet_1class #models_zoo.segmentation.densenet.MultiSEDensenet121 #models_zoo.segmentation.resnet.MultiResnet34
+  model_params:
+    n_channels: 3
+    n_classes: 1
+  loss: losses.LossBinaryDice #losses.BCEWithLogitsLoss losses.MixedLoss
+  loss_params: {}
+  metrics: [metrics.Dice] #[metrics.Binary_Accuracy, metrics.Binary_Accuracy08, metrics.Binary_Accuracy07]
+  steps_per_epoch: 4000
+  accumulation: 1
+  new_save: True
+#  weights: ../weights/densenet_segment25_08_512/1/tt_3_0.51290.pt
+stages:
+-
+  load_best: False
+  optimizer: Adam #RAdam
+  optimizer_params:
+    lr: 0.0003    # 0.0003
+  scheduler: ReduceLROnPlateau
+  scheduler_params:
+    mode: max
+    patience: 12
+    factor: 0.5
+    min_lr: 0.00005
+    verbose: True
+  epochs: 750
+  augmentation: mix_transform

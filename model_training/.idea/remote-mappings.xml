@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteMappingsManager">
+    <list>
+      <list>
+        <remote-mappings server-id="python@8a745945-5b97-48c6-aaea-f7dc9a531d6e" />
+        <remote-mappings server-id="python@sftp://ibespalov@skoltech-dgx-station:22/home/ibespalov/env/bin/python3">
+          <settings>
+            <list>
+              <mapping local-root="$PROJECT_DIR$" remote-root="/home/ibespalov/env/Endocrinology_project" />
+            </list>
+          </settings>
+        </remote-mappings>
+      </list>
+    </list>
+  </component>
+</project>

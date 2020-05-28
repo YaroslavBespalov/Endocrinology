@@ -1,0 +1,37 @@
+data_params:
+  batch_size: 6
+  num_workers: 64
+  augmentation_params:
+    resize: 512
+
+train_params:
+  name: Unet2d
+  model: models_zoo.segmentation.densenet.MultiSEDensenet121 #models_zoo.segmentation.densenet.MultiSEDensenet121
+  model_params:
+    num_filters: 64
+    pretrained: False
+    num_classes: 1
+  loss: losses.LossBinaryDice
+  loss_params: {}
+  metrics: [metrics.Dice]
+  steps_per_epoch: 2500
+  new_save: True
+#  weights: ../weights/densenet_512_1/1/tt_3_0.58727.pt
+stages:
+-
+  load_best: False
+  optimizer: Adam
+  optimizer_params:
+    lr: 0.0003
+  scheduler: ReduceLROnPlateau
+    scheduler_params:
+      patience: 15
+      factor: 0.5
+      min_lr: 0.000001
+      verbose: True
+  epochs: 300
+  augmentation: test_transform
+#  scheduler: MultiStepLR
+#  scheduler_params:
+#    milestones: [ 0, 10, 20, 30]
+#    gamma: 0.7
